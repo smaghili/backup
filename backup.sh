@@ -115,16 +115,15 @@ databases=\$(mysql -h 127.0.0.1 --user=\$USER --password=\$PASSWORD -e "SHOW DAT
 for db in \$databases; do
     if [[ "\$db" != "information_schema" ]] && [[ "\$db" != "mysql" ]] && [[ "\$db" != "performance_schema" ]] && [[ "\$db" != "sys" ]] ; then
         echo "Dumping database: \$db"
-		mysqldump -h 127.0.0.1 --force --opt --user=\$USER --password=\$PASSWORD --databases \$db > /var/lib/mysql/db-backup/\$db.sql
-
+        mysqldump -h 127.0.0.1 --force --opt --user=\$USER --password=\$PASSWORD --databases \$db > /var/lib/mysql/db-backup/\$db.sql
     fi
 done
 
 EOL
-chmod +x /var/lib/marzban/mysql/ac-backup.sh
+        chmod +x /var/lib/marzban/mysql/ac-backup.sh
 
-ZIP=$(cat <<EOF
-docker exec marzban-mysql-1 bash -c "/var/lib/mysql/ac-backup.sh"
+        ZIP=$(cat <<EOF
+docker exec marzban-db-1 bash -c "/var/lib/mysql/ac-backup.sh"
 zip -r /root/ac-backup-m.zip /opt/marzban/* /var/lib/marzban/* /opt/marzban/.env -x /var/lib/marzban/mysql/\*
 zip -r /root/ac-backup-m.zip /var/lib/marzban/mysql/db-backup/*
 rm -rf /var/lib/marzban/mysql/db-backup/*
@@ -132,10 +131,10 @@ EOF
 )
 
     else
-      ZIP="zip -r /root/ac-backup-m.zip ${dir}/* /var/lib/marzban/* /opt/marzban/.env"
-fi
+        ZIP="zip -r /root/ac-backup-m.zip ${dir}/* /var/lib/marzban/* /opt/marzban/.env"
+    fi
 
-ACLover="marzban backup"
+    ACLover="marzban backup"
 
 # x-ui backup
 # ساخت فایل پشتیبانی برای نرم‌افزار X-UI و ذخیره آن در فایل ac-backup.zip
