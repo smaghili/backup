@@ -100,14 +100,14 @@ if [ -d "/var/lib/marzban/mysql" ]; then
 
   sed -i -e 's/\s*=\s*/=/' -e 's/\s*:\s*/:/' -e 's/^\s*//' /opt/marzban/.env
 
-  docker exec marzban-mysql-1 bash -c "mkdir -p /var/lib/mysql/db-backup"
+  docker exec marzban-db-1 bash -c "mkdir -p /var/lib/mysql/db-backup"
   source /opt/marzban/.env
 
     cat > "/var/lib/marzban/mysql/ac-backup.sh" <<EOL
 #!/bin/bash
 
 USER="root"
-PASSWORD="$MYSQL_ROOT_PASSWORD"
+PASSWORD="12341234"
 
 
 databases=\$(mysql -h 127.0.0.1 --user=\$USER --password=\$PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database)
