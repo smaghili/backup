@@ -102,14 +102,6 @@ bash <(curl -Ls https://github.com/smaghili/backup/raw/main/backup.sh)
 
 ###
 
-<h1 align="left">Donation</h1>
-
-###
-
-<p align="left">https://nowpayments.io/donation/ACLover</p>
-
-###
-
 <h1 align="left">Video tutorial</h1>
 
 https://github.com/AC-Lover/backup/assets/49290111/905c545c-caa9-4ad5-80d1-82c702fb3f2e
